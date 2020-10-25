@@ -77,6 +77,7 @@ export default {
         { key: 'marketCapAsset', label: 'Mkt Cap (Asset)', sortable: true },
         { key: 'lastSevenDays', label: 'Last 7 Days', sortable: true },
       ],
+      // Must be fetched from server
       items: [
         {
           'index': 1,
