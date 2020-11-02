@@ -57,6 +57,7 @@ value<template>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Table',
   data() {
@@ -163,6 +164,12 @@ export default {
     rows() {
       return this.items.length;
     }
+  },
+  created(){
+    axios.get(this.endpoint('/prices/')).then(res => {
+      this.items = res.data;
+    })
+    
   },
   methods : {
     formatNumber(number) {
