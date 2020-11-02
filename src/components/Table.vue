@@ -80,78 +80,78 @@ export default {
       ],
       // Must be fetched from server
       items: [
-        {
-          'index': 1,
-          'registrar': 'DEUS',
-          'price': {
-            'usd': 1128597,
-            'eth': 50
-          },
-          'oneHour': 0.1,
-          'oneDay': -2,
-          'sevenDays': 10,
-          'oneDayVolume': {
-            'usd': 19454767,
-            'eth': 20
-          },
-          'marketCapRegistrar': {
-            'usd': 208943192,
-            'eth': 30
-          },
-          'marketCapAsset': {
-            'usd': 12323,
-            'eth': 20
-          },
-          'lastSevenDays': 'graph'
-        },
-        {
-          'index': 2,
-          'registrar': 'DEA',
-          'price': {
-            'usd': 37063,
-            'eth': 60,
-          },
-          'oneHour': -0.1,
-          'oneDay': 2,
-          'sevenDays': 10,
-          'oneDayVolume': {
-            'usd': 10505800,
-            'eth': 10
-          },
-          'marketCapRegistrar': {
-            'usd': 41848909,
-            'eth': 20
-          },
-          'marketCapAsset': {
-            'usd': 1000000,
-            'eth': 30
-          },
-          'lastSevenDays': 'graph'
-        },
-        {
-          'index': 3,
-          'registrar': 'rTSLA',
-          'price': {
-            'usd': 0.994344,
-            'eth': 40,
-          },
-          'oneHour': 0.1,
-          'oneDay': 2,
-          'sevenDays': -10,
-          'oneDayVolume': {
-            'usd': 30946569,
-            'eth': 40
-          },
-          'marketCapRegistrar': {
-            'usd': 15626080,
-            'eth': 20
-          },
-          'marketCapAsset': {
-            'usd': 123232455,
-            'eth': 30
-          },
-          'lastSevenDays': 'graph'
-        }
+        // {
+        //   'index': 1,
+        //   'registrar': 'DEUS',
+        //   'price': {
+        //     'usd': 1128597,
+        //     'eth': 50
+        //   },
+        //   'oneHour': 0.1,
+        //   'oneDay': -2,
+        //   'sevenDays': 10,
+        //   'oneDayVolume': {
+        //     'usd': 19454767,
+        //     'eth': 20
+        //   },
+        //   'marketCapRegistrar': {
+        //     'usd': 208943192,
+        //     'eth': 30
+        //   },
+        //   'marketCapAsset': {
+        //     'usd': 12323,
+        //     'eth': 20
+        //   },
+        //   'lastSevenDays': 'graph'
+        // },
+        // {
+        //   'index': 2,
+        //   'registrar': 'DEA',
+        //   'price': {
+        //     'usd': 37063,
+        //     'eth': 60,
+        //   },
+        //   'oneHour': -0.1,
+        //   'oneDay': 2,
+        //   'sevenDays': 10,
+        //   'oneDayVolume': {
+        //     'usd': 10505800,
+        //     'eth': 10
+        //   },
+        //   'marketCapRegistrar': {
+        //     'usd': 41848909,
+        //     'eth': 20
+        //   },
+        //   'marketCapAsset': {
+        //     'usd': 1000000,
+        //     'eth': 30
+        //   },
+        //   'lastSevenDays': 'graph'
+        // },
+        // {
+        //   'index': 3,
+        //   'registrar': 'rTSLA',
+        //   'price': {
+        //     'usd': 0.994344,
+        //     'eth': 40,
+        //   },
+        //   'oneHour': 0.1,
+        //   'oneDay': 2,
+        //   'sevenDays': -10,
+        //   'oneDayVolume': {
+        //     'usd': 30946569,
+        //     'eth': 40
+        //   },
+        //   'marketCapRegistrar': {
+        //     'usd': 15626080,
+        //     'eth': 20
+        //   },
+        //   'marketCapAsset': {
+        //     'usd': 123232455,
+        //     'eth': 30
+        //   },
+        //   'lastSevenDays': 'graph'
+        // }
       ],
       selected: 'usd',
       options: [
