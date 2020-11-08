@@ -17,7 +17,17 @@ Vue.mixin({
       return process.env.API_URL + url
     }
   }
-})
+});
+
+router.afterEach((to, from) => {
+  Vue.nextTick(() => {
+    var title = "RegistrarCap";
+    if(to.params.hasOwnProperty("registrar")) {
+      title += " - " + to.params.registrar;
+    }
+    document.title = title;
+  });
+});
 
 /* eslint-disable no-new */
 new Vue({
