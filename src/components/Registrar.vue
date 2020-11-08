@@ -60,68 +60,54 @@
     <br>
     <br>
 
-    <trading-vue
-      :data="this.$data"
-      :title-txt="this.titleTxt"
-      :width="1300">
-    </trading-vue>
+
   </div>
 </template>
 
 <script>
-import TradingVue from 'trading-vue-js';
-
 export default {
   name: 'Registrar',
-  components: { TradingVue },
-    data() {
-        return {
-            titleTxt: "RegistrarCap",
-            price: 2.1,
-            fields: [
-              { key: 'oneHour', label: '1h' },
-              { key: 'oneDay', label: '24h' },
-              { key: 'oneWeek', label: '7d' },
-              { key: 'twoWeeks', label: '14d' },
-              { key: 'oneMonth', label: '30d' },
-              { key: 'oneYear', label: '1y' },
-            ],
-            items: [
-              {
-                "oneHour": -10,
-                "oneDay": 20,
-                "oneWeek": 5,
-                "twoWeeks": 100,
-                "oneMonth": -10,
-                "oneYear": -50,
-              },
-            ],
-            timeSelected: 'oneDay',
-            timeOptions: [
-              { value: 'oneDay', text: '24h' },
-              { value: 'oneWeek', text: '7d' },
-              { value: 'twoWeeks', text: '14d' },
-              { value: 'oneMonth', text: '30d' },
-              { value: 'threeMonths', text: '90d' },
-              { value: 'halfYear', text: '180d' },
-              { value: 'oneYear', text: '1y' },
-              { value: 'max', text: 'Max' },
-            ],
-            chartSelected: 'price',
-            chartOptions: [
-              { value: 'price', text: 'Price' },
-              { value: 'marketCapRegistrar', text: 'Market Cap (Registrar)' },
-              { value: 'marketCapAsset', text: 'Market Cap (Asset)' },
-            ],
-            ohlcv: [
-              [ 1551128400000, 33,  37.1, 14,  14,  196 ],
-              [ 1551132000000, 13.7, 30, 6.6,  30,  206 ],
-              [ 1551135600000, 29.9, 33, 21.3, 21.8, 74 ],
-              [ 1551139200000, 21.7, 25.9, 18, 24,  140 ],
-              [ 1551142800000, 24.1, 24.1, 24, 24.1, 29 ],
-            ],
-        }
+  data() {
+    return {
+      titleTxt: "RegistrarCap",
+      price: 2.1,
+      fields: [
+        { key: 'oneHour', label: '1h' },
+        { key: 'oneDay', label: '24h' },
+        { key: 'oneWeek', label: '7d' },
+        { key: 'twoWeeks', label: '14d' },
+        { key: 'oneMonth', label: '30d' },
+        { key: 'oneYear', label: '1y' },
+      ],
+      items: [
+        {
+          "oneHour": -10,
+          "oneDay": 20,
+          "oneWeek": 5,
+          "twoWeeks": 100,
+          "oneMonth": -10,
+          "oneYear": -50,
+        },
+      ],
+      timeSelected: 'oneDay',
+      timeOptions: [
+        { value: 'oneDay', text: '24h' },
+        { value: 'oneWeek', text: '7d' },
+        { value: 'twoWeeks', text: '14d' },
+        { value: 'oneMonth', text: '30d' },
+        { value: 'threeMonths', text: '90d' },
+        { value: 'halfYear', text: '180d' },
+        { value: 'oneYear', text: '1y' },
+        { value: 'max', text: 'Max' },
+      ],
+      chartSelected: 'price',
+      chartOptions: [
+        { value: 'price', text: 'Price' },
+        { value: 'marketCapRegistrar', text: 'Market Cap (Registrar)' },
+        { value: 'marketCapAsset', text: 'Market Cap (Asset)' },
+      ],
     }
+  },
 };
 </script>
 
