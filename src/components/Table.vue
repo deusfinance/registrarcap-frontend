@@ -21,30 +21,38 @@
       :sort-desc.sync="sortDesc"
       :per-page="perPage"
       :current-page="currentPage"
+      :busy="isBusy"
     >
+      <template #table-busy>
+        <div class="text-center">
+          <b-spinner class="align-middle"></b-spinner>
+          <strong>Loading...</strong>
+        </div>
+      </template>
       <template v-slot:cell(registrar)="{value}">
         <router-link class="text-white" :to="{name: 'Registrar', params: {registrar: value}}">{{ value }}</router-link>
       </template>
       <template v-slot:cell(price)="{value}">
-        <span v-if="selected == 'usd'">${{formatNumber(value.usd)}}</span>
-        <span v-else>{{formatNumber(value.eth)}} ETH</span>
+        <span v-if="selected == 'usd'">${{formatNumber(value.usd, 2)}}</span>
+        <span v-else>{{value.eth}} ETH</span>
       </template>
       <template v-slot:cell(oneHour)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
+        <span v-if="value >= 0" class="text-success">{{formatNumber(value, 1)}}%</span>
+        <span v-else class="text-danger">{{formatNumber(value, 1)}}%</span>
       </template>
       <template v-slot:cell(oneDay)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
+        <span v-if="value >= 0" class="text-success">{{formatNumber(value, 1)}}%</span>
+        <span v-else class="text-danger">{{formatNumber(value, 1)}}%</span>
       </template>
       <template v-slot:cell(sevenDays)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
+        <span v-if="value >= 0" class="text-success">{{formatNumber(value, 1)}}%</span>
+        <span v-else class="text-danger">{{formatNumber(value, 1)}}%</span>
       </template>
       <template v-slot:cell(oneDayVolume)="{value}">
-        <span v-if="selected == 'usd'">${{formatNumber(value.usd)}}</span>
-        <span v-else>{{formatNumber(value.eth)}} ETH</span>
+        <span v-if="selected == 'usd'">${{formatNumber(value.usd, 0)}}</span>
+        <span v-else>{{formatNumber(value.eth, 0)}} ETH</span>
       </template>
+      <!-- TODO: bring back market caps, when backend returns them
       <template v-slot:cell(marketCapRegistrar)="{value}">
         <span v-if="selected == 'usd'">${{formatNumber(value.usd)}}</span>
         <span v-else>{{formatNumber(value.eth)}} ETH</span>
@@ -53,6 +61,7 @@
         <span v-if="selected == 'usd'">${{formatNumber(value.usd)}}</span>
         <span v-else>{{formatNumber(value.eth)}} ETH</span>
       </template>
+      -->
     </b-table>
 
     <b-pagination
@@ -71,6 +80,7 @@ export default {
   name: "Table",
   data() {
     return {
+      isBusy: true,
       perPage: 100,
       currentPage: 1,
       sortBy: "index",
@@ -83,89 +93,11 @@ export default {
         { key: "oneDay", label: "24h", sortable: true },
         { key: "sevenDays", label: "7d", sortable: true },
         { key: "oneDayVolume", label: "24h Volume", sortable: true },
-        {
-          key: "marketCapRegistrar",
-          label: "Mkt Cap (Registrar)",
-          sortable: true,
-        },
+        { key: "marketCapRegistrar", label: "Mkt Cap (Registrar)", sortable: true },
         { key: "marketCapAsset", label: "Mkt Cap (Asset)", sortable: true },
         { key: "lastSevenDays", label: "Last 7 Days", sortable: true },
       ],
-      // Must be fetched from server
-      items: [
-        // {
-        //   index: 1,
-        //   registrar: "DEUS",
-        //   price: {
-        //     usd: 1128597,
-        //     eth: 50,
-        //   },
-        //   oneHour: 0.1,
-        //   oneDay: -2,
-        //   sevenDays: 10,
-        //   oneDayVolume: {
-        //     usd: 19454767,
-        //     eth: 20,
-        //   },
-        //   marketCapRegistrar: {
-        //     usd: 208943192,
-        //     eth: 30,
-        //   },
-        //   marketCapAsset: {
-        //     usd: 12323,
-        //     eth: 20,
-        //   },
-        //   lastSevenDays: "graph",
-        // },
-        // {
-        //   index: 2,
-        //   registrar: "DEA",
-        //   price: {
-        //     usd: 37063,
-        //     eth: 60,
-        //   },
-        //   oneHour: -0.1,
-        //   oneDay: 2,
-        //   sevenDays: 10,
-        //   oneDayVolume: {
-        //     usd: 10505800,
-        //     eth: 10,
-        //   },
-        //   marketCapRegistrar: {
-        //     usd: 41848909,
-        //     eth: 20,
-        //   },
-        //   marketCapAsset: {
-        //     usd: 1000000,
-        //     eth: 30,
-        //   },
-        //   lastSevenDays: "graph",
-        // },
-        // {
-        //   index: 3,
-        //   registrar: "rTSLA",
-        //   price: {
-        //     usd: 0.994344,
-        //     eth: 40,
-        //   },
-        //   oneHour: 0.1,
-        //   oneDay: 2,
-        //   sevenDays: -10,
-        //   oneDayVolume: {
-        //     usd: 30946569,
-        //     eth: 40,
-        //   },
-        //   marketCapRegistrar: {
-        //     usd: 15626080,
-        //     eth: 20,
-        //   },
-        //   marketCapAsset: {
-        //     usd: 123232455,
-        //     eth: 30,
-        //   },
-        //   lastSevenDays: "graph",
-        // },
-      ],
+      items: [],
       selected: "usd",
       options: [
         { value: "usd", text: "USD" },
@@ -181,11 +113,15 @@ export default {
   created() {
     axios.get(this.endpoint("/prices/")).then((res) => {
       this.items = res.data;
+      this.isBusy = false;
     });
   },
   methods: {
-    formatNumber(number) {
-      var formatter = new Intl.NumberFormat("en-US");
+    formatNumber(number, digits) {
+      var formatter = new Intl.NumberFormat("en-US", {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits,
+      });
       return formatter.format(number);
     },
   },
