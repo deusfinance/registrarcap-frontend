@@ -7,6 +7,18 @@
       <span v-else class="text-danger">{{ items[0]['oneDay'] }}%</span>
     </h3>
 
+    <br>
+
+    <div>
+      <b-form-select
+        v-model="currencySelect"
+        :options="currencyOptions"
+        v-on:change="currencyChange"
+      ></b-form-select>
+    </div>
+
+    <br>
+
     <div class="text-white">
       Market Cap (Registrar): $5,788,804<br>
       Market Cap (Asset): $5,788,804<br>
@@ -56,11 +68,6 @@
       buttons
       button-variant="outline-secondary">
     </b-form-radio-group>
-
-    <br>
-    <br>
-
-
   </div>
 </template>
 
@@ -71,6 +78,14 @@ export default {
     return {
       titleTxt: "RegistrarCap",
       price: 2.1,
+      currencySelect: 'usd',
+      currencyOptions: [
+        { value: 'usd', text: 'USD' },
+        { value: 'eth', text: 'ETH' },
+        { value: 'btc', text: 'BTC' },
+        { value: 'deus', text: 'DEUS' },
+        { value: 'dea', text: 'DEA' },
+      ],
       fields: [
         { key: 'oneHour', label: '1h' },
         { key: 'oneDay', label: '24h' },
@@ -106,6 +121,11 @@ export default {
         { value: 'marketCapRegistrar', text: 'Market Cap (Registrar)' },
         { value: 'marketCapAsset', text: 'Market Cap (Asset)' },
       ],
+    }
+  },
+  methods: {
+    currencyChange(newCurrency) {
+      //make ajax backend request with newCurrency and change all dollar values
     }
   },
 };
