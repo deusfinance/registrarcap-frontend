@@ -1,55 +1,7 @@
 <template>
 
-  <div style="padding-left: 20em; padding-right: 20em;">
-    <h1 class="text-white">{{ $route.params.registrar.toUpperCase() }}</h1>
-    <h3 class="text-white">
-      {{ price }}
-      <span v-if="items[0]['oneDay'] >= 0" class="text-success">{{ items[0]['oneDay'] }}%</span>
-      <span v-else class="text-danger">{{ items[0]['oneDay'] }}%</span>
-    </h3>
-
-    <div class="text-white">
-      Market Cap (Registrar): $5,788,804<br>
-      Market Cap (Asset): $5,788,804<br>
-      24 Hour Trading Vol: $1,028,532<br>
-      Max Supply: 2,657,016<br>
-    </div>
-
-    <br>
-
-    <b-table :items="items" :fields="fields" class="text-center" responsive bordered>
-      <template v-slot:cell(oneHour)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
-      </template>
-      <template v-slot:cell(oneDay)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
-      </template>
-      <template v-slot:cell(oneWeek)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
-      </template>
-      <template v-slot:cell(twoWeeks)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
-      </template>
-      <template v-slot:cell(oneMonth)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
-      </template>
-      <template v-slot:cell(oneYear)="{value}">
-        <span v-if="value >= 0" class="text-success">{{value}}%</span>
-        <span v-else class="text-danger">{{value}}%</span>
-      </template>
-    </b-table>
-
-    <br>
-    <br>
-
     <div class="TVChartContainer" :id="containerId" />
 
-  </div>
 </template>
 
 <script>
@@ -79,7 +31,7 @@ export default {
         		debug: true, // set to true to show console logs
         		symbol: 'AAPL', // default symbol
         		interval: 'D', // default interval
-        		fullscreen: false,
+        		fullscreen: true,
         		container_id: 'tv_chart_container',
         		datafeed: new window.Datafeeds.UDFCompatibleDatafeed(this.datafeedUrl),
         		library_path: this.libraryPath,
