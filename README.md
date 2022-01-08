@@ -1,3 +1,5 @@
+# DEPRICATED
+
 ## Run vue
 1. Install npm dependencies.
 `npm install`
