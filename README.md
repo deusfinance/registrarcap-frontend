@@ -1,4 +1,4 @@
-# DEPRICATED
+# DEPRECATED
 
 ## Run vue
 1. Install npm dependencies.
